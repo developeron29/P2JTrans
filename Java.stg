@@ -1,0 +1,130 @@
+group Java;
+
+program(globals,functions) ::= <<
+
+
+
+
+
+
+public class Wrapper {
+    <globals; separator="\n">
+}
+
+>>
+
+variable(type,name) ::= "<type> <name>;"
+
+printer(state) ::= "System.out.println( <state> );"
+
+sqler(v1,v2,v3) ::= <<
+Statement stmt = null;
+    String query = 'SELECT <v1> INTO <v2> FROM <v3> ';
+
+        try {
+        stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+    } catch (SQLException e ) {
+        JDBCTutorialUtilities.printSQLException(e);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
+>>
+
+assignme(var1,var2) ::= "<var1> = <var2>;"
+
+conditionals(v4,v5,v6) ::= <<
+
+if(<v4>) {
+    <locals; separator="\n">
+}
+else
+{
+    <stats; separator="\n">
+
+}
+
+>>
+
+conditionalelsif(v7,v8) ::= <<
+else if ( <v7> ) {
+    <v8>
+}
+>>
+
+type_int() ::= "public int"
+
+type_string() ::= "public String"
+
+type_float() ::= "public float"
+
+refVar(id) ::= "<id>"
+
+iconst(value) ::= "<value>"
+
+abequals(left,right) ::= "<left> == <right>"
+
+abless(left,right) ::= "<left> \< <right>"
+
+abright(left,right) ::= "<left> \> <right>"
+
+abplus(left,right) ::= " <left> + <right>"
+
+giveassign(t1,t2) ::= "<t1>=<t2>;"
+
+findloop(t1,t2) ::= <<
+
+do {
+    <locals; separator="\n">
+}   while (<t2>);
+
+>>
+
+wloop(t1,t2) ::= <<
+
+while (<t2>) {
+    <locals; separator="\n">
+}
+
+>>
+
+floop(t1,t2,t3,t4) ::= <<
+
+for(<t1> \< <t3> && <t1> \> <t2> ; <t1>++) {
+    <locals; separator="\n">
+  
+}
+
+>>
+
+funccall(i,j) ::= "<i>=<j>();"
+
+procall(j) ::= "<j>();"
+
+
+commentId(t1) ::= <<
+/*
+* <t1>
+*/
+>>
+
+procedure(t1,t2) ::= <<
+    
+        public static void <t1>() {
+         <locals; separator="\n">
+    } 
+
+>>
+
+function (t1,t2,t3,t4) ::= <<
+    
+    <t2> <t1>() {
+    <t3>
+         <locals; separator="\n">
+           
+        
+        return <t5>
+    } 
+
+>>

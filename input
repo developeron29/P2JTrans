@@ -1,0 +1,60 @@
+DECLARE
+var_salary number;
+var_string varchar;
+var_float float;
+BEGIN
+SELECT salary INTO var_salary FROM employee ;
+IF ( var_float > 3 ) 
+THEN 
+ dbms_output.put_line(var_salary); 
+ELSE 
+ dbms_output.put_line(var_string); 
+END IF;
+
+var_salary := 100;
+
+LOOP x := x + 10;
+      dbms_output.put_line(x);
+      IF x > 50 THEN
+         exit;
+      END IF;
+   END LOOP;
+
+WHILE a < 20 LOOP
+      a := a + 1;
+   END LOOP;
+
+FOR a in 10 .. 20 LOOP
+  dbms_output.put_line(a);
+	dbms_output.put_line(y);
+END LOOP;
+
+CREATE OR REPLACE PROCEDURE greetings
+AS
+BEGIN
+   dbms_output.put_line(k);
+SELECT salary INTO var_salary FROM employee ;
+   dbms_output.put_line(y);
+   WHILE a < 20 LOOP
+      a := a + 1;
+   END LOOP;
+END;
+
+greetings();
+
+CREATE OR REPLACE FUNCTION employer_details_func
+    RETURN varchar;
+ IS 
+    var_salary varchar; 
+ BEGIN 
+	SELECT salary INTO var_salary FROM employee;
+	RETURN var_salary;
+ END;
+
+e = employer_details_func();
+
+dbms_output.put_line(var_float);
+END
+
+
+
