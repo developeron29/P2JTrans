@@ -1,3 +1,8 @@
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
+
 import java.io.*;
 import org.antlr.runtime.*;
 import org.antlr.stringtemplate.*;
@@ -26,5 +31,15 @@ public class Main {
 	parser.setTemplateLib(templates);
 	RuleReturnScope r = parser.program();
 	System.out.println(r.getTemplate().toString());
+	    
+	try {
+		FileWriter myWriter = new FileWriter("CSharp_"+String.format(new Date().toString())+"_output");
+		myWriter.write(r.getTemplate().toString());
+		myWriter.close();
+		System.out.println("Successfully wrote to the file.");
+	} catch (IOException e) {
+		System.out.println("An error occurred.");
+		e.printStackTrace();
+	}    
     }
 }
